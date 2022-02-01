@@ -1,6 +1,17 @@
 # Use Python on Alpine Linux as base image
 FROM python:alpine
 
+RUN apk update \
+ && apk upgrade \
+ && apk add --no-cache \
+            rsync \
+            openssh-client \
+            ca-certificates \
+			      apk-cron \
+            openssl \
+ && update-ca-certificates \
+ && rm -rf /var/cache/apk/*
+
 # Create working directory
 RUN mkdir -p /app
 WORKDIR /app
