@@ -7,13 +7,15 @@ RUN apk update \
             rsync \
             openssh-client \
             ca-certificates \
-			      apk-cron \
+            apk-cron \
             openssl \
  && update-ca-certificates \
  && rm -rf /var/cache/apk/*
 
 # Create working directory
 RUN mkdir -p /app
+RUN touch -p /app/script.sh
+RUN chmod +x /app/script.sh
 WORKDIR /app
 
 # Copy requirements.txt to force Docker not to use the cache
