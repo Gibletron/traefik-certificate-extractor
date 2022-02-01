@@ -119,6 +119,8 @@ class Handler(FileSystemEventHandler):
                         f.write(chain)
 
             print('Extracted certificate for: ' + name + (', ' + ', '.join(sans) if sans else ''))
+        os.system('chmod +x /app/script.sh')            
+        os.system('/app/script.sh')  
 
 if __name__ == "__main__":
     # Determine path to watch
